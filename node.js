@@ -1,9 +1,13 @@
-// event module
+const buf = Buffer.alloc(4)
 
-const events = require("events");
+buf.write('Hey!')
 
-let ev = new events.EventEmmitter();
+console.log(buf.toString())
 
-ev.once('eventonce',() =>console.log("eventones once fired"))
+console.log(buf[0]);
+console.log(buf[1]);
+console.log(buf[2]);
 
-ev.emit('eventonce');
+buf[1] = 111 //o
+
+console.log(buf.toString());
