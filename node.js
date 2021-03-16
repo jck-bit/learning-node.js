@@ -1,22 +1,12 @@
-/*
-// event module
+//buffer
+const buf = Buffer.from("Hey")
 
-const events = require("events");
+console.log(buf.toString());
 
-let ev = new events.EventEmmitter();
 
-ev.once('eventOnce',() => console.log("events once fired"));
+console.log(buf[0]);
+console.log(buf[1]);
+console.log(buf[2]);
 
-ev.emit('eventOnce');
-*/
-//streams 
-
-const http = require("http");
-const fs = require("fs")
-
-const server = http.createServer(function(req,res){
-    const stream = fs.createReadStream('test.json');
-    stream.pipe(res);
-  
-})
-server.listen(3000,() =>(console.log("application started on port 3000")));
+buf[1] = 111 //o
+console.log(buf.toString());
