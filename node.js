@@ -1,15 +1,8 @@
-/*
-//exception handling
+//write a javascript programme tha reverses a number
 
-throw new Error('error message');
-//thats the first method of throwing errors in node.js
-
-//using the try and catch method
-*/
-try{
-    console.log('start try block');
-    lalala:
-    console.log('end try block');
-}catch(err){
-    console.log('error message',err)
+function reverse_number(n){
+    n = n + "";
+    return n.split("").reverse().join("");
 }
+
+console.log(reverse_number(6754))
