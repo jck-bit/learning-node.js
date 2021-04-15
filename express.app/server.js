@@ -1,13 +1,20 @@
-//views
+//Express form in node.js
 
+//   
 
 const express = require("express")
-const app = express();
+const path = require("path")
+const app =express ()
 
-const PORT = 3000; 
+const PORT = process.env.PORT || 3000
 
+app.set("views",path.join(__dirname,'views'));
 app.set('view engine','pug')
 
-app.get('/',function(req,res){
-    res.render('index')
-}).listen(PORT,()=>{console.log('server started on port 3000')});
+app.get('/',(req,res)=>{
+  res.render("index",{title:"form handling"});  
+})
+
+app.listen(PORT,()=>{
+    console.log('listening to requests on http://localhost:${PORT}');
+})
