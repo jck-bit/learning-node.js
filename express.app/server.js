@@ -16,6 +16,10 @@ app.get("/",(req,res)=>{
   return res.send('session set')
 })
 
+app.get("/session",(req,res)=>{
+  var name = req.session.name;
+})
+
 app.listen(PORT,()=>{
   console.log('listening the request on http://localhost:$(PORT)')
 })
