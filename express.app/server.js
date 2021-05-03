@@ -1,25 +1,33 @@
-//session
+//cookies in node.js
 const express = require("express")
 const app = express()
-const session = require("express-session")
+const cookies = require("cookie-parser")
+
 
 const PORT = process.env.PORT || 3000
 
-app.use(session({
-  secret:"Your secret key",
-  resave:true,
-  saveUninitialized:true
-}))
+app.use(cookies());
+
+let users = {
+  name :"john",
+  age : 28
+} 
+
+
 
 app.get("/",(req,res)=>{
-  var name ='John';
-  return res.send('session set')
+  res.send("cookies-tutorial");
+});
+
+app.get("/setuser",(req,res)=>{
+  res.cookie("userdata",users)
+  res.send("user data added to cookies");
 })
 
-app.get("/session",(req,res)=>{
-  var name = req.session.name;
+app.get("/getuser",(req,res)=>{
+  res.send(req.cookies)
 })
 
 app.listen(PORT,()=>{
-  console.log('listening the request on http://localhost:$(PORT)')
+  console.log('listening request on http://localhost:$(PORT)');
 })
