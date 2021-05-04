@@ -28,6 +28,11 @@ app.get("/getuser",(req,res)=>{
   res.send(req.cookies)
 })
 
+app.get("/logout",(req,res)=>{
+  res.clearCookie('userdata')
+  res.send("user logout succesfully");
+})
+
 app.listen(PORT,()=>{
   console.log('listening request on http://localhost:$(PORT)');
 })
